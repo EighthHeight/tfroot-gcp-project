@@ -32,6 +32,7 @@ variable "project_roles" {
 locals {
   project_roles_enforced = [
     "roles/compute.networkAdmin",
+    "roles/compute.securityAdmin",
     "roles/iam.serviceAccountAdmin",
     "roles/monitoring.alertPolicyEditor",
     "roles/monitoring.notificationChannelEditor",
