@@ -92,6 +92,12 @@ variable "project_owners" {
   default     = []
 }
 
+variable "org_admin_sa_roles" {
+  type = list(string)
+  description = "List of roles which the admin service account will retain within the created project"
+  default = []
+}
+
 #########
 # Project APIs
 #########

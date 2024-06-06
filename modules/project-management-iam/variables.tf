@@ -22,6 +22,12 @@ variable "org_admin_sa_email" {
 }
 
 variable "org_admin_sa_roles" {
+  type = list(string)
+  description = "List of roles which the admin service account will retain within the created project"
+  default = []
+}
+
+variable "org_admin_sa_roles_enforced" {
   type        = list(string)
   description = "List of roles which the admin service account will retain within the created project"
   default = [
@@ -38,4 +44,8 @@ variable "org_admin_sa_roles" {
     "roles/monitoring.admin",
     # "roles/certificatemanager.owner",
   ]
+}
+
+locals {
+  org_admin_sa_roles = distinct(concat(var.org_admin_sa_roles, var.org_admin_sa_roles_enforced))
 }

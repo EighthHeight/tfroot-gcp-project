@@ -54,6 +54,7 @@ module "management-iam" {
   gcp_project_id = module.project-factory.project_id
 
   org_admin_sa_email = var.terraform_sa_email
+  org_admin_sa_roles = var.org_admin_sa_roles
   owners             = var.project_owners
 }
 

@@ -2,7 +2,7 @@
 # Org Admin Permissions
 ########
 resource "google_project_iam_member" "admin_sa_member" {
-  for_each = toset(var.org_admin_sa_roles)
+  for_each = toset(local.org_admin_sa_roles)
 
   project = var.gcp_project_id
   role    = each.value
