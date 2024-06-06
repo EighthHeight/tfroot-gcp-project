@@ -39,7 +39,7 @@ variable "org_admin_sa_roles_enforced" {
     "roles/iam.serviceAccountUser",
     "roles/resourcemanager.projectIamAdmin",
     # "roles/secretmanager.admin",
-    # "roles/serviceusage.serviceUsageAdmin",
+    "roles/serviceusage.serviceUsageAdmin",
     "roles/storage.admin",
     "roles/monitoring.admin",
     # "roles/certificatemanager.owner",
