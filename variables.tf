@@ -113,6 +113,7 @@ variable "activate_apis_enforced" {
   default = [
     "certificatemanager.googleapis.com",
     "clouderrorreporting.googleapis.com",
+    "cloudidentity.googleapis.com",
     "cloudkms.googleapis.com",
     "cloudresourcemanager.googleapis.com",
     "compute.googleapis.com",
