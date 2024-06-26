@@ -114,7 +114,7 @@ locals {
   group_role_bindings = {
     for role in local.group_roles_list :
     role => [
-      for group in var.var.group_iam_access :
+      for group in var.group_iam_access :
       "group:${group.group_email}"
       if contains(group.roles, role)
     ]
