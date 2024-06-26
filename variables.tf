@@ -210,3 +210,15 @@ variable "tfbucket_name_prefix" {
   EOT
   default     = "tfstate"
 }
+
+#########
+# Group IAM access to project
+#########
+variable "group_iam_access" {
+  type = list(object({
+    group_email = string
+    roles = list(string)
+  }))
+  description = "List of groups with IAM roles to be associated to"
+  default = []
+}

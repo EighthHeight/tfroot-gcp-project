@@ -101,3 +101,30 @@ module "terraform-access" {
   sa_groups                 = var.tfsa_groups
   bucket_name               = "${var.tfbucket_name_prefix}--${module.project-factory.project_id}"
 }
+
+
+#########
+# Group IAM access to project
+#########
+locals {
+  group_roles_list = distinct(flatten([
+    for group in var.group_iam_access :
+    group.roles
+  ]))
+  group_role_bindings = {
+    for role in local.group_roles_list :
+    role => [
+      for group in var.var.group_iam_access :
+      "group:${group.group_email}"
+      if contains(group.roles, role)
+    ]
+  }
+}
+
+module "group-iam-access" {
+  source  = "terraform-google-modules/iam/google//modules/projects_iam"
+  version = "7.7.1"
+
+  projects = [module.project-factory.project_id]
+  bindings = local.group_role_bindings
+}
