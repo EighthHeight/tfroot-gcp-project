@@ -66,6 +66,7 @@ locals {
   api_identity_group_list = flatten([
     for api in local.activate_api_identities : [
       for group in api.groups : {
+        api      = api.api
         sa_email = lookup(module.project-factory.enabled_api_identities, api.api, null)
         group    = group
       }
@@ -74,7 +75,7 @@ locals {
 
   api_identity_group_map = {
     for identity in local.api_identity_group_list :
-    "${identity.sa_email}-${identity.group}" => identity
+    "${identity.api}-${identity.group}" => identity
   }
 }
 
